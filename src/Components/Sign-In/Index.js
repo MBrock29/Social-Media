@@ -9,9 +9,11 @@ import { signInWithGoogle } from '../../Services/Auth'
     const signInBtnClick = async () => {
         let userBySignIn = await signInWithGoogle()
         if(userBySignIn) setUser(userBySignIn)
+        console.log(userBySignIn, "djddjj")
     }
      return (
          <div className="signInBtn" onClick={signInBtnClick}>
+             {console.log(user)}
              <p>Sign in with Google</p>
          </div>
      )

@@ -2,7 +2,8 @@ import {auth, provider} from "../Firebase"
 
 export const signInWithGoogle = async () => {
     let user
-    auth.signInWithPopup(provider)
+    
+    await auth.signInWithPopup(provider)
     .then((res) => {
         console.log(res.user)
         user = res.user
@@ -10,6 +11,7 @@ export const signInWithGoogle = async () => {
     .catch((error) => {
         console.log(error.message)
     })
+    console.log(user, "test")
     return user
 }
 

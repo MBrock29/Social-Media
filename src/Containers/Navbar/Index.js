@@ -8,9 +8,9 @@ export default function Navbar() {
     return (
         <div className="Navbar">
             <h3>React Social Media</h3>
-            <h3>{user}</h3>
+            {console.log(user)}
 
-            {user ? <p>Logged in!</p> : <SignInBtn />}
+            {user ? <img src={user.photoURL} /> : <SignInBtn />}
         </div>
     )
 }
