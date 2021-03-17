@@ -1,9 +1,30 @@
 import React, {useState, useContext} from 'react'
+import CommentInput from '../../Components/Comment-input/Index'
 import Comment from '../../Components/Comment/Index'
 import { UserContext } from '../../Contexts/User'
+import { db, storage } from '../../Firebase'
 import "./Style.css"
 
 export default function Post({profileURL, username, id, photoURL, caption, comments}) {
+    const [user, setUser] = useContext(UserContext).user
+    const deletePost = () => {
+      var imageRef = storage.refFromURL(photoURL)
+      
+      imageRef.delete().then(function(){
+          console.log("Delete successful")
+      
+      }).catch(function(error){
+          console.log(`Error ${error}`)
+      })
+
+      db.collection("posts").doc(id).delete()
+      .then(function () {
+        console.log("Delete successful")
+      
+    }).catch(function(error){
+        console.log(`Error ${error}`)
+      })
+    }
     
 
     return (
@@ -14,7 +35,7 @@ export default function Post({profileURL, username, id, photoURL, caption, comme
                   <p>{username}</p>
                   <p style={{ marginLeft: "8px"}} />
                 </div>
-                <button className="post__delete">Delete</button>
+                <button onClick={deletePost} className="post__delete">Delete</button>
             </div>
             <div className="post__center">
                 <img className="post__photoURL" src={photoURL} />
@@ -25,11 +46,14 @@ export default function Post({profileURL, username, id, photoURL, caption, comme
                 {caption}
                 </p>
             </div>
+
+           
            
             {comments ? (comments.map((comment) => (
               <Comment username={comment.username} caption={comment.comment} /> )))
              : <div></div> 
             }
+             {user ? <CommentInput comments={comments} id={id} /> : <></>}
         </div>
     )
 }

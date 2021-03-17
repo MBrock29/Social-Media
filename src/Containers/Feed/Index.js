@@ -22,8 +22,10 @@ export default function Index() {
                 username={post.username}
                 photoURL={post.photoURL}
                 caption={post.caption}
+                comments={post.comments}
                 key={id}
-                id={id} />
+                id={id}
+                />
                 )}
             )}
         </div>

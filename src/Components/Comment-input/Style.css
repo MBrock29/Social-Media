@@ -1,0 +1,20 @@
+.commentInput {
+    display: flex;
+    justify-content: space-between;
+}
+
+.commentInput__textarea {
+    border: none;
+    width: 100%;
+    resize: none;
+    margin: 8px 0;
+}
+
+.commentInput__textarea:focus {
+    outline: none;
+}
+
+.commentInput__btn {
+    background-color: white;
+    border: none;
+}
