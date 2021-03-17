@@ -38,6 +38,9 @@ export default function CreatePost() {
                         profileURL: user.photoURL
                     })
                 })
+                setCaption("")
+                setProgress(0)
+                setImage(null)
             })
         }
     }
