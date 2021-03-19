@@ -13,7 +13,8 @@ export default function CommentInput({comments, id}) {
         
         commentArray.push( {
         comment: comment,
-        username: user.email.replace("@gmail.com",""),   
+        username: user.email,
+        myname: user.displayName,
         })
         db.collection("posts")
         .doc(id)

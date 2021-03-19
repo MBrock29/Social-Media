@@ -34,7 +34,8 @@ export default function CreatePost() {
                         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
                         caption: caption,
                         photoURL: imageURL,
-                        username: user.email.replace("@gmail.com",""),
+                        username: user.email,
+                        myname: user.displayName,
                         profileURL: user.photoURL
                     })
                 })

@@ -5,11 +5,12 @@ import { UserContext } from '../../Contexts/User'
 import { db, storage } from '../../Firebase'
 import "./Style.css"
 
-export default function Post({profileURL, username, id, photoURL, caption, comments}) {
+export default function Post({profileURL, username, id, photoURL, caption, comments, myname}) {
     const [user, setUser] = useContext(UserContext).user
     const deletePost = () => {
-      var imageRef = storage.refFromURL(photoURL)
       
+      var imageRef = storage.refFromURL(photoURL)
+    
       imageRef.delete().then(function(){
           console.log("Delete successful")
       
@@ -32,17 +33,18 @@ export default function Post({profileURL, username, id, photoURL, caption, comme
             <div className="post__header">
                 <div className="post__headerLeft">
                   <img src={profileURL} className="post__profilePic"/>
-                  <p>{username}</p>
+                  <p>{myname ? myname : username}</p>
                   <p style={{ marginLeft: "8px"}} />
                 </div>
-                <button onClick={deletePost} className="post__delete">Delete</button>
+                {user && user.email === username && (<button onClick={deletePost} className="post__delete">Delete</button>)}
+           
             </div>
             <div className="post__center">
                 <img className="post__photoURL" src={photoURL} />
             </div>
             <div>
             <p>
-                <span style={{ fontWeight: "500", marginRight: "8px"}}>{username}</span>
+                <span style={{ fontWeight: "500", marginRight: "8px"}}>{myname ? myname : username}</span>
                 {caption}
                 </p>
             </div>
@@ -50,7 +52,7 @@ export default function Post({profileURL, username, id, photoURL, caption, comme
            
            
             {comments ? (comments.map((comment) => (
-              <Comment username={comment.username} caption={comment.comment} /> )))
+              <Comment username={comment.myname ? comment.myname : comment.username} caption={comment.comment} /> )))
              : <div></div> 
             }
              {user ? <CommentInput comments={comments} id={id} /> : <></>}
