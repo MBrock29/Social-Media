@@ -1,4 +1,4 @@
- import React, {useState, useContext} from 'react'
+ import React, {useContext} from 'react'
 import { UserContext } from '../../Contexts/User'
 import { signInWithGoogle } from '../../Services/Auth'
  import "./Style.css"

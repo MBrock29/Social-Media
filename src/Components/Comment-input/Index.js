@@ -6,10 +6,10 @@ import "./Style.css"
 export default function CommentInput({comments, id}) {
     const [user, setUser] = useContext(UserContext).user
     const [comment, setComment] = useState("")
-    const [commentArray, setCommentArray] = useState(comments ? comments: [])
+    const commentArray = useState(comments ? comments: [])
     
     const addComment = () => {
-        if(comment != ""){
+        if(comment !== ""){
         
         commentArray.push( {
         comment: comment,

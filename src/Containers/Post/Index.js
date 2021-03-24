@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'
+import React, {useContext} from 'react'
 import CommentInput from '../../Components/Comment-input/Index'
 import Comment from '../../Components/Comment/Index'
 import { UserContext } from '../../Contexts/User'
@@ -32,7 +32,7 @@ export default function Post({profileURL, username, id, photoURL, caption, comme
         <div className="post">
             <div className="post__header">
                 <div className="post__headerLeft">
-                  <img src={profileURL} className="post__profilePic"/>
+                  <img src={profileURL} alt="" className="post__profilePic"/>
                   <p>{myname ? myname : username}</p>
                   {console.log(myname)}
                   <p style={{ marginLeft: "8px"}} />
@@ -41,7 +41,7 @@ export default function Post({profileURL, username, id, photoURL, caption, comme
            
             </div>
             <div className="post__center">
-                <img className="post__photoURL" src={photoURL} />
+                <img className="post__photoURL" alt="" src={photoURL} />
             </div>
             <div>
             <p>
