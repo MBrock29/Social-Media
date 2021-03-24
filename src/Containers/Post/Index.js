@@ -34,6 +34,7 @@ export default function Post({profileURL, username, id, photoURL, caption, comme
                 <div className="post__headerLeft">
                   <img src={profileURL} className="post__profilePic"/>
                   <p>{myname ? myname : username}</p>
+                  {console.log(myname)}
                   <p style={{ marginLeft: "8px"}} />
                 </div>
                 {user && user.email === username && (<button onClick={deletePost} className="post__delete">Delete</button>)}

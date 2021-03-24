@@ -23,6 +23,7 @@ export default function Index() {
                 photoURL={post.photoURL}
                 caption={post.caption}
                 comments={post.comments}
+                myname={post.myname}
                 key={id}
                 id={id}
                 />
